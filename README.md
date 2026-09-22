@@ -1,32 +1,79 @@
-# React + TypeScript + Vite
+# NEW STYLE
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Каталог на React, TypeScript и Vite, адаптированный к PHP API из соседней папки `b2b`. PHP и подключение к БД не изменяются и не запускаются этим проектом.
 
-Currently, two official plugins are available:
+## Запуск фронтенда
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Требуется Node.js 22.18+ или 24 LTS.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+test -f .env.local || cp .env.example .env.local
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Демовход без PHP и БД
+
+В локальном `.env.local` деморежим включён. При настройке из `.env.example` включите его явно:
+
+```dotenv
+VITE_DEMO_MODE=true
+```
+
+После изменения файла перезапустите Vite. Для входа используйте одну из пар:
+
+| Логин | Пароль |
+| --- | --- |
+| `demo` | `demo123` |
+| `manager` | `manager123` |
+
+Каталог, карточки товаров, поиск и корзина работают на демонстрационных данных без обращения к PHP или БД. Сессия и изменения корзины хранятся в памяти вкладки и сбрасываются после перезагрузки. Реальные заказы не создаются. Эти логины действуют только в деморежиме.
+
+## Работа с PHP API
+
+Установите `VITE_DEMO_MODE=false` в `.env.local` и перезапустите Vite. В `.env.example` этот режим выбран по умолчанию.
+
+В режиме API запросы идут на `/b2b` на том же домене. Для другого расположения задайте `VITE_API_BASE_URL` в `.env.local`, например `https://your-api.example/manager/api/b2b`. Укажите префикс до папки `b2b` включительно, без `index.php` и параметров. Для доступа по другому домену требуется разрешённый сервером CORS.
+
+Если уже работающий бэкенд расположен на другом локальном порту, можно оставить `VITE_API_BASE_URL=/b2b` и задать `API_PROXY_TARGET=http://127.0.0.1:8000`: Vite будет проксировать `/b2b/*`. Это настройка только dev-сервера, она не поднимает PHP. После изменения `.env.local` перезапустите Vite. В production нужен reverse proxy для `/b2b` либо полный URL API, заданный перед сборкой.
+
+В режиме API без работающего PHP и базы вход не выполнится: приложение покажет ошибку сервера. Ошибка API не переключает приложение на демонстрационные данные. Пароли и токены в `.env` записывать не нужно.
+
+## Подключённые сценарии
+
+- Вход через `auth/?phone&password`; полученный `token` передаётся параметром запроса. Сессия хранится только в памяти вкладки: после перезагрузки нужно войти повторно.
+- Каталог `catalog/?token&group`: корень `group=0` показывает категории, вложенные разделы — дочерние категории и товары.
+- Поиск по всему каталогу `search/?token&q`, с задержкой 350 мс, отменой устаревших запросов и нормализацией пробелов. PHP поддерживает от одного до пяти слов.
+- Карточка товара `catalog/id/?token&product_id`: отдельная загрузка, галерея, цены за упаковку/единицу, оптовые цены, процент бонусов и похожие товары.
+- Состав акции `catalog/act/?token&product_id`; акционная цена отображается как условная, окончательная сумма берётся из корзины.
+- Корзина: чтение, добавление, уменьшение на единицу, удаление товара и очистка. После каждого изменения перечитывается серверное состояние. `count` при добавлении — приращение. `price` в строке корзины уже является суммой строки; `amount` — серверный итог. Повторяющиеся ID в акционных строках сохраняются.
+- Диапазон цен, участие в акции и сортировка работают локально по текущей серверной подборке. Несуществующие параметры фильтров, пагинации и сортировки на сервер не отправляются.
+- Состояния загрузки, ошибок, пустых разделов, повтор загрузки и блокировка повторных изменений корзины во время запроса.
+
+Каталожные эндпоинты не возвращают рейтинги, признак новинки и точные остатки, поэтому вымышленные значения удалены. `favorite/add` является заглушкой без сохранения: интерфейс избранного не подключён. Старые ключи localStorage от макета не используются.
+
+Оформление заказа в интерфейсе отключено. Метод `api.checkout(token, { chz, comment })` подготовлен под существующий `cart/clouse`, но смысл начисления `chz` нужно согласовать отдельно: обработчик прибавляет переданное значение к балансу, поэтому передавать полный `cart.chz` нельзя. Все изменяющие запросы выполняются только по действию пользователя, без автоматических повторов.
+
+## Проверки
+
+```bash
+npm run build   # TypeScript и production-сборка
+npm run lint    # статическая проверка
+npm test        # контракты API на тестовых ответах, без PHP и БД
+npm run preview
+```
+
+Тесты проверяют методы и параметры, кодирование специальных символов, строковые числа PHP, пустые ответы, ошибки, отмену/таймаут, суммы и повторяющиеся строки корзины. Это проверка интеграционного кода по PHP-исходникам; работоспособность реального сервера и его SQL без запущенного бэкенда не подтверждена.
+
+## Структура
+
+- `src/api/client.ts` — запросы, преобразование ответов и ошибки.
+- `src/api/demo.ts` — локальные ответы для демовхода, каталога и корзины.
+- `src/api/types.ts` — нормализованные типы.
+- `src/App.tsx` — вход, дерево категорий, поиск и фильтры.
+- `src/components/ProductDialog.tsx` — подробная карточка и акции.
+- `src/hooks/useServerCart.ts` — синхронизация корзины.
+- `src/components/CartDrawer.tsx` — корзина с серверными суммами.
+- [docs/backend-api.md](docs/backend-api.md) — аудит всех 37 PHP-обработчиков, включая неподключённые разделы, точные параметры и ограничения.
+
+В режиме API изображения товаров берутся из ответов сервера (в PHP зафиксированы домены `21baza.ru` и `new.21baza.ru`); при ошибке отображается заглушка. Шрифты загружаются локально из `public/fonts`.
