@@ -1,0 +1,397 @@
+.client-profile-page {
+  padding-bottom: 36px;
+}
+.client-profile-overview {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 25px 30px;
+  margin: 28px 0 20px;
+  background: white;
+  border: 1px solid #e3e9e4;
+  border-radius: 14px;
+}
+.client-profile-avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 70px;
+  height: 70px;
+  background: #e9f1eb;
+  color: #588769;
+  font-size: 23px;
+  font-weight: 750;
+  letter-spacing: -1px;
+  border-radius: 18px;
+}
+.client-profile-identity {
+  min-width: 0;
+  flex: 1;
+}
+.client-profile-identity > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.client-profile-identity h2 {
+  margin: 0;
+  font-size: 21px;
+  letter-spacing: -0.5px;
+  color: #304b39;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.client-profile-identity p {
+  margin: 5px 0;
+  color: #788d79;
+  font-size: 12px;
+}
+.client-profile-identity > span {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  color: #9aa595;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.client-profile-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.client-profile-stats > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  border: 1px solid #e3e9e4;
+  border-radius: 12px;
+  padding: 22px;
+  min-width: 0;
+}
+.client-profile-stat-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  color: #689073;
+  background: #f0f5ee;
+}
+.client-profile-stats > div > div {
+  min-width: 0;
+}
+.client-profile-stats span:not(.client-profile-stat-icon) {
+  display: block;
+  color: #93a08b;
+  font-size: 10px;
+  margin-bottom: 4px;
+}
+.client-profile-stats strong {
+  font-size: 21px;
+  color: #334f3b;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+.client-profile-stats > div:last-child strong {
+  font-size: 19px;
+}
+.client-profile-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 295px;
+  gap: 24px;
+  align-items: start;
+}
+.client-profile-form {
+  background: white;
+  border: 1px solid #e3e9e4;
+  border-radius: 14px;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.client-profile-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #92a08a;
+}
+.client-profile-section-heading h2 {
+  color: #304b38;
+  font-size: 16px;
+  margin: 0;
+  font-weight: 750;
+}
+.client-profile-section-heading p {
+  color: #98a18f;
+  font-size: 11px;
+  margin: 7px 0 0;
+  line-height: 1.6;
+}
+.client-profile-form > .client-profile-section-heading {
+  grid-column: 1/-1;
+  padding-bottom: 7px;
+}
+.client-profile-form-message,
+.client-profile-address {
+  grid-column: 1/-1;
+}
+.client-profile-form-footer {
+  grid-column: 1/-1;
+  border-top: 1px solid #edf0e9;
+  padding-top: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.client-profile-form-footer p {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  max-width: 220px;
+  margin: 0;
+  color: #a0a991;
+  font-size: 10px;
+  line-height: 1.7;
+}
+.client-profile-form-footer p svg {
+  flex: none;
+  margin-top: 2px;
+}
+.client-profile-form-footer > div {
+  display: flex;
+  gap: 5px;
+}
+.client-profile-side {
+  display: grid;
+  gap: 20px;
+}
+.client-profile-order-links {
+  background: white;
+  border: 1px solid #e3e9e4;
+  border-radius: 14px;
+  padding: 24px;
+}
+.client-profile-order-links h2 {
+  font-size: 18px;
+  color: #33503c;
+  margin: 8px 0 20px;
+  letter-spacing: -0.4px;
+}
+.client-profile-order-links > a {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 0;
+  color: #889f87;
+  text-decoration: none;
+}
+.client-profile-order-links > a + a {
+  border-top: 1px solid #edf0e9;
+}
+.client-profile-link-icon {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  background: #f0f5ed;
+  border-radius: 8px;
+  flex: none;
+}
+.client-profile-order-links > a > span:nth-child(2) {
+  flex: 1;
+}
+.client-profile-order-links strong {
+  font-size: 11px;
+  color: #466443;
+  font-weight: 650;
+}
+.client-profile-order-links small {
+  display: block;
+  margin-top: 4px;
+  color: #9da78f;
+  font-size: 10px;
+}
+.client-profile-order-links a:hover strong {
+  color: #137c66;
+}
+.client-profile-tier {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 25px;
+  color: #a78b4b;
+  background: #f7f3e9;
+  border: 1px solid #ece6d5;
+  border-radius: 13px;
+}
+.client-profile-tier > span {
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  margin: 17px 0 7px;
+  font-weight: 750;
+}
+.client-profile-tier h2 {
+  font-size: 22px;
+  color: #827039;
+  margin: 0 0 10px;
+  letter-spacing: -0.5px;
+}
+.client-profile-tier p {
+  color: #a09a7e;
+  font-size: 11px;
+  line-height: 1.8;
+  margin: 0;
+}
+.client-profile-recent {
+  background: white;
+  border: 1px solid #e3e9e4;
+  border-radius: 14px;
+  margin-top: 25px;
+  overflow: hidden;
+}
+.client-profile-recent > .client-profile-section-heading {
+  padding: 24px 28px;
+}
+.client-profile-recent table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 530px;
+  text-align: left;
+  font-size: 11px;
+}
+.client-profile-recent th {
+  background: #f9fbf6;
+  font-weight: 550;
+  color: #97a08b;
+  padding: 13px 26px;
+}
+.client-profile-recent td {
+  padding: 16px 26px;
+  border-top: 1px solid #edf0e9;
+  color: #6f8468;
+}
+.client-profile-recent td:first-child a {
+  color: #3d6f48;
+  font-weight: 750;
+  text-decoration: none;
+}
+.client-profile-recent td:last-child a {
+  color: #9dad94;
+}
+.client-profile-no-orders {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px 20px 40px;
+  color: #a2b19a;
+}
+.client-profile-no-orders p {
+  font-size: 12px;
+  color: #8e9a83;
+}
+.client-profile-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+@media (max-width: 1200px) {
+  .client-profile-stats {
+    gap: 10px;
+  }
+  .client-profile-stats > div {
+    padding: 18px;
+    gap: 10px;
+  }
+  .client-profile-stat-icon {
+    width: 33px;
+    height: 33px;
+  }
+  .client-profile-stats > div:last-child strong {
+    font-size: 16px;
+  }
+  .client-profile-layout {
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 18px;
+  }
+  .client-profile-form {
+    padding: 22px;
+    gap: 19px;
+  }
+  .client-profile-form-footer {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 900px) {
+  .client-profile-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .client-profile-side {
+    grid-template-columns: 1fr 1fr;
+  }
+  .client-profile-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .client-profile-overview {
+    padding: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .client-profile-avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 13px;
+    font-size: 19px;
+  }
+  .client-profile-identity h2 {
+    font-size: 18px;
+  }
+  .client-profile-identity > div {
+    gap: 7px;
+  }
+  .client-profile-overview > button {
+    margin-left: 69px;
+  }
+  .client-profile-form {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 21px;
+  }
+  .client-profile-side {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .client-profile-stats > div {
+    padding: 17px;
+  }
+  .client-profile-stat-icon {
+    display: none;
+  }
+  .client-profile-form-footer > div {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .client-profile-recent > .client-profile-section-heading {
+    padding: 21px;
+  }
+  .client-profile-section-heading > button {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+@media (max-width: 560px) {
+  .client-profile-identity { flex-basis: calc(100% - 69px); }
+  .client-profile-overview > a { margin-left: 69px; }
+}
+.client-profile-recent table { min-width: 650px; }
+.client-profile-recent td, .client-profile-recent th { white-space: nowrap; }

@@ -187,7 +187,7 @@ test('validator accepts lower layers, internal files and public Shared modules',
     'entities/product/model/types.ts': 'import type { Transport } from "../../../shared/api/index.ts";',
     'shared/api/index.ts': 'export type Transport = string;',
     'shared/ui/icon/index.ts': 'export { Icon } from "./Icon.tsx";',
-    'shared/ui/icon/Icon.tsx': 'import "../../brand/index.ts";',
+    'shared/ui/icon/Icon.tsx': 'import "../brand/index.ts";',
     'shared/ui/brand/index.ts': '',
   })
   assert.deepEqual(validateArchitecture(files), [])

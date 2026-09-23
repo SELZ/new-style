@@ -25,3 +25,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local shared demonstration workspace
+data/demo-state.json
+data/demo-state.json.*.tmp

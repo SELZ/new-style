@@ -1,0 +1,243 @@
+.administration-page {
+  --admin-ink: #243645;
+  --admin-muted: #7c8a96;
+}
+.administration-page .page-heading {
+  margin-bottom: 25px;
+}
+.admin-stats {
+  margin-bottom: 25px;
+}
+.admin-stats .stat-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 23px;
+}
+.admin-stats .stat-card strong {
+  color: var(--admin-ink);
+  font-size: 29px;
+  letter-spacing: -1px;
+}
+.admin-stats .stat-card small {
+  color: var(--admin-muted);
+  font-size: 12px;
+}
+.admin-stat-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: #137c66;
+  padding: 9px;
+  border-radius: 11px;
+  background: #edf6f2;
+  line-height: 0;
+}
+.admin-panel {
+  padding: 0 !important;
+  overflow: hidden;
+}
+.admin-tabs {
+  padding: 8px 21px 0;
+}
+.admin-tabs button {
+  padding: 17px 15px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.admin-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 23px;
+}
+.admin-toolbar > :first-child {
+  width: min(100%, 370px);
+}
+.admin-toolbar button {
+  flex-shrink: 0;
+}
+.admin-table {
+  font-size: 13px;
+  color: var(--admin-ink);
+}
+.admin-table thead {
+  background: #f8fafb;
+}
+.admin-table th {
+  color: #7b8894;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.admin-table th:first-child,
+.admin-table td:first-child {
+  padding-left: 24px;
+}
+.admin-table th:last-child,
+.admin-table td:last-child {
+  padding-right: 24px;
+  text-align: right;
+}
+.admin-table td {
+  border-color: #edf0f2;
+}
+.admin-table td:first-child {
+  min-width: 240px;
+}
+.admin-table td strong {
+  font-weight: 600;
+}
+.admin-cell-detail {
+  display: block;
+  margin-top: 4px;
+  color: #89939e;
+  font-size: 11px;
+  font-weight: 400;
+}
+.admin-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.admin-state i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.admin-state.is-active {
+  color: #188466;
+}
+.admin-state.is-inactive {
+  color: #97a0aa;
+}
+.admin-warehouse-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  border: 1px solid #e7ecef;
+  border-radius: 10px;
+  background: #f8fafb;
+}
+.admin-table-foot {
+  margin: 0;
+  padding: 18px 24px;
+  color: #94a0ab;
+  font-size: 11px;
+  border-top: 1px solid #edf0f2;
+}
+.admin-empty {
+  padding: 40px 24px;
+  text-align: center;
+  color: #87939e;
+}
+.admin-empty svg {
+  margin-inline: auto;
+}
+.admin-empty h3 {
+  color: #405060;
+  font-size: 16px;
+}
+.admin-empty p {
+  font-size: 13px;
+}
+.admin-notice {
+  margin-bottom: 18px;
+}
+.admin-nowrap {
+  white-space: nowrap;
+}
+.admin-stock-zero {
+  color: #c06b40;
+}
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.admin-permissions {
+  margin: 0;
+  padding: 16px;
+  border: 1px solid #e4e9ec;
+  border-radius: 10px;
+}
+.admin-permissions legend {
+  padding-inline: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.admin-permissions > p {
+  margin: 0 0 12px;
+  font-size: 12px;
+}
+.admin-image-control {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.admin-image-control .muted {
+  margin: 7px 0 0;
+  font-size: 11px;
+  color: #87939e;
+}
+.admin-image-preview {
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  border: 1px solid #e6ebee;
+  background: #f6f8f9;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #92a09f;
+}
+.admin-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.admin-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 640px) {
+  .admin-toolbar {
+    padding: 16px;
+    flex-wrap: wrap;
+  }
+  .admin-toolbar > :first-child {
+    width: 100%;
+  }
+  .admin-toolbar > button {
+    width: 100%;
+  }
+  .admin-tabs {
+    padding-inline: 9px;
+  }
+  .admin-tabs button {
+    padding: 14px 10px;
+    font-size: 12px;
+  }
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-image-control {
+    flex-wrap: wrap;
+  }
+}
